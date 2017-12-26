@@ -1,0 +1,47 @@
+<div *ngFor="let control of controlsArray; let i = index">
+    <div *ngIf="checkCondition(control)" class="arrayFormPreview">
+        <div class="inputFrame">
+            <div class="row previewRow">
+                <div>
+                    <label>{{control.question}}</label>
+                </div>
+            </div>
+            <div class="row customRow customBlock5 customBlock7">
+                <div class="customInput marginLeft"
+                     *ngIf="control.questionType === 'Text'">
+                    <input class="form-control inline"
+                           type="text"
+                           [(ngModel)]="control.value">
+                </div>
+                <div class="customInput marginLeft"
+                     *ngIf="control.questionType === 'Number'">
+                    <input class="form-control inline"
+                           type="number"
+                           [(ngModel)]="control.value">
+                </div>
+                <div class="customInput marginLeft alignText"
+                     *ngIf="control.questionType === 'Yes/No'">
+                    <input name="radiotype{{inputsLevel}}"
+                           type="radio"
+                           [(ngModel)]="control.value"
+                           value="Yes"/>Yes
+                    <input name="radiotype{{inputsLevel}}"
+                           type="radio"
+                           style="margin-left: 20px;"
+                           [(ngModel)]="control.value"
+                           value="No"/>No
+                    <br/>
+                </div>
+            </div>
+        </div>
+
+
+        <div *ngIf="control.subinputs.length != 0 && control.value != ''">
+            <app-form-preview [controlsArray]="control.subinputs"
+                              [parentValue]="control.value"
+                              [inputsLevel]="inputsLevel + 1"
+                              [parentQuestionType]="control.questionType">
+            </app-form-preview>
+        </div>
+    </div>
+</div>

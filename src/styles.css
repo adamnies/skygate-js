@@ -1,0 +1,106 @@
+
+
+.customLabel {
+    margin-left: 20px;
+    width: 130px;
+    text-align: left
+}
+
+.customInput {
+    width: 400px;
+    height: 35px;
+}
+
+.customInputCondition {
+    width: 250px;
+    height: 35px;
+}
+
+.customInputConditionType {
+    width: 140px;
+    height: 35px;
+}
+
+.customBlock {
+    width: 400px;
+    left: 150px;
+}
+
+.customBlock2 {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.customBlock3 {
+    width: 150px;
+}
+
+.customBlock4 {
+    width: 400px;
+}
+
+.customBlock5 {
+    margin-left: 10px;
+}
+
+.customBlock6 {
+    margin-left: 30px;
+}
+
+.customBlock7 {
+    width: 300px;
+}
+
+.customContainer {
+    width: 550px;
+    /*border: 2px solid red;*/
+}
+
+.previewRow {
+    margin-left: 30px;
+    width: 300px;
+}
+
+.arrayForm {
+    margin-left: 131px;
+    border-left: dashed 1px gray;
+    padding-top: 20px;
+}
+
+.arrayFormPreview {
+    margin-left: 140px;
+    padding-top: 10px;
+}
+
+.customRow {
+    margin-top: 5px;
+}
+
+.customButton1 {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.customButton2 {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.inputFrame {
+    border: 3px solid #92a29f;
+    width: 400px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.marginLeft {
+    margin-left: 20px;
+}
+
+.paddingExport {
+    padding: 50px;
+}
+
+.alignText {
+    text-align: center;
+}

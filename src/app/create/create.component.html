@@ -1,0 +1,55 @@
+<div *ngFor="let a of controlsArray; let i = index" class="customBlock2">
+    <div class="row customRow">
+        <div class="customLabel">
+            <label>Question</label>
+        </div>
+        <div class="customInput">
+            <input class="form-control inline"
+                   type="text"
+                   [(ngModel)]="a.question">
+        </div>
+    </div>
+
+    <div class="row customRow">
+        <div class="customLabel">
+            <label>Type</label>
+        </div>
+        <div class="customInput">
+            <select class="custom-select mb-2 mr-sm-2 mb-sm-0 customInput"
+                    id="inlineFormCustomSelect"
+                    (change)="changeSubinputs(i)"
+                    [(ngModel)]="a.questionType">
+                <option *ngFor="let questionType of questionTypes">
+                    {{questionType}}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row customRow">
+        <div class="customBlock3"></div>
+        <div class="customBlock4">
+            <button class="btn btn-primary"
+                    (click)="addSubInput(i)">
+                ADD SUB-INPUT
+            </button>
+            <button class="btn btn-danger"
+                    (click)="removeInput(i)">
+                REMOVE
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="a.subinputs.length != 0">
+        <app-form [controlsArray]="a.subinputs" [parentQuestionType]="a.questionType"></app-form>
+    </div>
+</div>
+
+
+<div class="customButton1" *ngIf="controlsArray.length == 0">
+    <button class="btn btn-success" (click)="addInput()">START/ADD INPUT</button>
+</div>
+
+<div class="customButton2" *ngIf="controlsArray.length != 0">
+    <button class="btn btn-secondary" (click)="addInput()">ADD INPUT</button>
+</div>

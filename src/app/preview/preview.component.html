@@ -1,0 +1,46 @@
+<div *ngFor="let control of controlsArray; let i = index">
+    <div class="customBlock2 inputFrame">
+        <div class="row marginLeft">
+            <div>
+                <label>{{control.question}}</label>
+            </div>
+        </div>
+        <div class="row customRow customBlock5">
+            <div class="customInput marginLeft"
+                 *ngIf="control.questionType === 'Text'">
+                <input class="form-control inline"
+                       type="text"
+                       [(ngModel)]="control.value">
+            </div>
+            <div class="customInput marginLeft"
+                 *ngIf="control.questionType === 'Number'">
+                <input class="form-control inline"
+                       type="number"
+                       [(ngModel)]="control.value">
+            </div>
+            <div class="customInput alignText"
+                 *ngIf="control.questionType === 'Yes/No'">
+                <input name="options{{i}}"
+                       type="radio"
+                       [(ngModel)]="control.value"
+                       value="Yes"
+                       [checked]="control.value == 'Yes'"/>Yes
+                <input name="options{{i}}"
+                       type="radio"
+                       style="margin-left: 20px;"
+                       [(ngModel)]="control.value"
+                       value=No
+                       [checked]="control.value == 'No'"/>No
+                <br/>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="control.subinputs.length != 0 && control.value != ''">
+        <app-form-preview [controlsArray]="control.subinputs"
+                          [parentValue]="control.value"
+                          [parentQuestionType]="control.questionType">
+        </app-form-preview>
+    </div>
+</div>
+

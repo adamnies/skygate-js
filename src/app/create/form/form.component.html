@@ -1,0 +1,88 @@
+<div *ngFor="let a of controlsArray; let i = index" class="arrayForm">
+    <div class="customContainer">
+        <div class="row customRow">
+            <div class="customLabel">
+                <label>Condition</label>
+            </div>
+            <div class="customInputCondition">
+                <select class="custom-select mb-2 mr-sm-2 mb-sm-0 customInputCondition"
+                        id="inlineSelect"
+                        [(ngModel)]="a.conditionType">
+                    <option value="Equals">
+                        Equals
+                    </option>
+                    <option value="Greater"
+                            *ngIf="parentQuestionType == 'Number'">
+                        Greater than
+                    </option>
+                    <option value="Less"
+                            *ngIf="parentQuestionType == 'Number'">
+                        Less than
+                    </option>
+                </select>
+            </div>
+            <div class="customInputConditionType customBlock5"
+                 *ngIf="parentQuestionType == 'Yes/No'">
+                <select class="custom-select mb-2 mr-sm-2 mb-sm-0 customInputConditionType"
+                        id="inlineFormSelect"
+                        [(ngModel)]="a.conditionValue">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="customInputConditionType customBlock5"
+                 *ngIf="parentQuestionType != 'Yes/No'">
+                <input class="form-control inline"
+                       type="text"
+                       [(ngModel)]="a.conditionValue">
+            </div>
+        </div>
+
+        <div class="row customRow">
+            <div class="customLabel">
+                <label>Question</label>
+            </div>
+            <div class="customInput">
+                <input class="form-control inline"
+                       type="text"
+                       [(ngModel)]="a.question">
+            </div>
+        </div>
+        <div class="row customRow">
+            <div class="customLabel">
+                <label>Type</label>
+            </div>
+            <div class="customInput">
+                <select class="custom-select mb-2 mr-sm-2 mb-sm-0 customInput"
+                        id="inlineFormCustomSelect"
+                        (change)="changeSubinputs(i)"
+                        [(ngModel)]="a.questionType">
+                    <option *ngFor="let questionType of questionTypes">
+                        {{questionType}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row customRow">
+            <div class="customBlock3"></div>
+            <div class="customBlock4">
+                <button class="btn btn-primary"
+                        (click)="addSubInput(i)">
+                    ADD SUB-INPUT
+                </button>
+                <button class="btn btn-warn"
+                        (click)="removeInput(i)">
+                    REMOVE
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="a.subinputs.length != 0">
+        <app-form [controlsArray]="a.subinputs"
+                  [parentQuestionType]="a.questionType">
+        </app-form>
+    </div>
+</div>
+
