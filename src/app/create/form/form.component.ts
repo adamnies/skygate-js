@@ -10,7 +10,7 @@ import {FormBuilderService} from '../../form-builder.service';
 })
 export class FormComponent implements OnInit {
     @Input() controlsArray: FormControl[] = [];
-    @Input() parentQuestionType = 'text';
+    @Input() parentQuestionType = '';
 
     questionTypes = ['Yes/No', 'Text', 'Number'];
     conditionTypes = ['Equals', 'Greater', 'Less'];

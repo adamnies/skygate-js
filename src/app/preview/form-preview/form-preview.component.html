@@ -1,5 +1,5 @@
 <div *ngFor="let control of controlsArray; let i = index">
-    <div *ngIf="checkCondition(control)" class="arrayFormPreview">
+    <div *ngIf="checkCondition(control)" [ngClass]="parentQuestionType != '' ? 'arrayFormPreview': ''">
         <div class="inputFrame">
             <div class="row previewRow">
                 <div>

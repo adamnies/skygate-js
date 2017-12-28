@@ -1,6 +1,8 @@
-<div *ngFor="let a of controlsArray; let i = index" class="arrayForm">
+<div *ngFor="let a of controlsArray; let i = index" [ngClass]="parentQuestionType != '' ? 'arrayForm': ''">
     <div class="customContainer">
-        <div class="row customRow">
+
+        <!--Condition-->
+        <div class="row customRow" *ngIf="parentQuestionType != ''">
             <div class="customLabel">
                 <label>Condition</label>
             </div>
@@ -8,17 +10,11 @@
                 <select class="custom-select mb-2 mr-sm-2 mb-sm-0 customInputCondition"
                         id="inlineSelect"
                         [(ngModel)]="a.conditionType">
-                    <option value="Equals">
-                        Equals
-                    </option>
+                    <option value="Equals">Equals</option>
                     <option value="Greater"
-                            *ngIf="parentQuestionType == 'Number'">
-                        Greater than
-                    </option>
+                            *ngIf="parentQuestionType == 'Number'">Greater than</option>
                     <option value="Less"
-                            *ngIf="parentQuestionType == 'Number'">
-                        Less than
-                    </option>
+                            *ngIf="parentQuestionType == 'Number'">Less than</option>
                 </select>
             </div>
             <div class="customInputConditionType customBlock5"
@@ -33,22 +29,21 @@
 
             <div class="customInputConditionType customBlock5"
                  *ngIf="parentQuestionType != 'Yes/No'">
-                <input class="form-control inline"
-                       type="text"
-                       [(ngModel)]="a.conditionValue">
+                <input class="form-control inline" type="text" [(ngModel)]="a.conditionValue">
             </div>
-        </div>
+        </div><!--Condition-->
 
+        <!--Question-->
         <div class="row customRow">
             <div class="customLabel">
                 <label>Question</label>
             </div>
             <div class="customInput">
-                <input class="form-control inline"
-                       type="text"
-                       [(ngModel)]="a.question">
+                <input class="form-control inline" type="text" [(ngModel)]="a.question">
             </div>
-        </div>
+        </div><!--Question-->
+
+        <!--Question Type-->
         <div class="row customRow">
             <div class="customLabel">
                 <label>Type</label>
@@ -63,21 +58,23 @@
                     </option>
                 </select>
             </div>
-        </div>
+        </div><!--Question Type-->
+
+        <!--ADD and REMOVE-->
         <div class="row customRow">
             <div class="customBlock3"></div>
             <div class="customBlock4">
                 <button class="btn btn-primary"
-                        (click)="addSubInput(i)">
-                    ADD SUB-INPUT
+                        (click)="addSubInput(i)">ADD SUB-INPUT
                 </button>
                 <button class="btn btn-warn"
-                        (click)="removeInput(i)">
-                    REMOVE
+                        (click)="removeInput(i)">REMOVE
                 </button>
             </div>
-        </div>
+        </div><!--ADD and REMOVE-->
     </div>
+
+
 
     <div *ngIf="a.subinputs.length != 0">
         <app-form [controlsArray]="a.subinputs"

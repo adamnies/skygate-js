@@ -11,7 +11,6 @@ import {FormControl} from '../data-model';
 export class CreateComponent implements OnInit, OnDestroy, OnChanges {
 
     questionTypes = ['Yes/No', 'Text', 'Number'];
-
     controlsArray: FormControl[] = [];
 
     constructor(private formBuilderService: FormBuilderService) {
@@ -32,12 +31,6 @@ export class CreateComponent implements OnInit, OnDestroy, OnChanges {
         this.formBuilderService.exportToLocalStorage(this.controlsArray);
     }
 
-    changeSubinputs(index) {
-        for (const a of this.controlsArray[index].subinputs) {
-            a.conditionValue = '';
-        }
-    }
-
     addInput() {
         const x = {
             value: '',
@@ -46,21 +39,5 @@ export class CreateComponent implements OnInit, OnDestroy, OnChanges {
             subinputs: []
         };
         this.controlsArray.push(x);
-    }
-
-    addSubInput(index) {
-        const x = {
-            value: '',
-            question: '',
-            questionType: this.questionTypes[0],
-            conditionType: 'Equals',
-            conditionValue: 'Yes',
-            subinputs: []
-        };
-        this.controlsArray[index].subinputs.push(x);
-    }
-
-    removeInput(index) {
-        this.controlsArray.splice(index, 1);
     }
 }

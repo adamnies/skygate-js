@@ -9,8 +9,8 @@ import {FormControl} from '../../data-model';
 })
 export class FormPreviewComponent {
     @Input() controlsArray: FormControl[] = [];
-    @Input() parentValue;
-    @Input() parentQuestionType;
+    @Input() parentValue: any = '';
+    @Input() parentQuestionType = '';
     @Input() inputsLevel = 0;
 
     questionTypes = ['Yes/No', 'Text', 'Number'];
@@ -20,6 +20,9 @@ export class FormPreviewComponent {
     }
 
     checkCondition(control): Boolean {
+        if (this.parentValue == '' && this.parentQuestionType == '') {
+            return true;
+        }
         if (this.parentQuestionType === this.questionTypes[0]) {
             return (this.parentValue === control.conditionValue);
         }
