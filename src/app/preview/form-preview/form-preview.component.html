@@ -21,11 +21,11 @@
                 </div>
                 <div class="customInput marginLeft alignText"
                      *ngIf="control.questionType === 'Yes/No'">
-                    <input name="radiotype{{inputsLevel}}"
+                    <input name="radiotype{{inputsLevel}}{{i}}"
                            type="radio"
                            [(ngModel)]="control.value"
                            value="Yes"/>Yes
-                    <input name="radiotype{{inputsLevel}}"
+                    <input name="radiotype{{inputsLevel}}{{i}}"
                            type="radio"
                            style="margin-left: 20px;"
                            [(ngModel)]="control.value"
@@ -39,7 +39,7 @@
         <div *ngIf="control.subinputs.length != 0 && control.value != ''">
             <app-form-preview [controlsArray]="control.subinputs"
                               [parentValue]="control.value"
-                              [inputsLevel]="inputsLevel + 1"
+                              [inputsLevel]="inputsLevel.concat(i)"
                               [parentQuestionType]="control.questionType">
             </app-form-preview>
         </div>

@@ -7,16 +7,21 @@ import {FormControl} from '../../data-model';
     templateUrl: './form-preview.component.html',
     styleUrls: ['./form-preview.component.css']
 })
-export class FormPreviewComponent {
+export class FormPreviewComponent implements OnInit {
     @Input() controlsArray: FormControl[] = [];
     @Input() parentValue: any = '';
     @Input() parentQuestionType = '';
-    @Input() inputsLevel = 0;
+    @Input() inputsLevel: String;
 
     questionTypes = ['Yes/No', 'Text', 'Number'];
     conditionTypes = ['Equals', 'Greater', 'Less'];
 
     constructor(private formBuilderService: FormBuilderService) {
+
+    }
+
+    ngOnInit() {
+        console.log(this.inputsLevel);
     }
 
     checkCondition(control): Boolean {
