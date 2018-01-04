@@ -12,9 +12,11 @@
                         [(ngModel)]="a.conditionType">
                     <option value="Equals">Equals</option>
                     <option value="Greater"
-                            *ngIf="parentQuestionType == 'Number'">Greater than</option>
+                            *ngIf="parentQuestionType == 'Number'">Greater than
+                    </option>
                     <option value="Less"
-                            *ngIf="parentQuestionType == 'Number'">Less than</option>
+                            *ngIf="parentQuestionType == 'Number'">Less than
+                    </option>
                 </select>
             </div>
             <div class="customInputConditionType customBlock5"
@@ -51,7 +53,7 @@
             <div class="customInput">
                 <select class="custom-select mb-2 mr-sm-2 mb-sm-0 customInput"
                         id="inlineFormCustomSelect"
-                        (change)="changeSubinputs(i)"
+                        (change)="changeControlSubinputs(controlsArray, i)"
                         [(ngModel)]="a.questionType">
                     <option *ngFor="let questionType of questionTypes">
                         {{questionType}}
@@ -65,21 +67,20 @@
             <div class="customBlock3"></div>
             <div class="customBlock4">
                 <button class="btn btn-primary"
-                        (click)="addSubInput(i)">ADD SUB-INPUT
+                        (click)="addSubInputToArray(controlsArray, i)">ADD SUB-INPUT
                 </button>
                 <button class="btn btn-warn"
-                        (click)="removeInput(i)">REMOVE
+                        (click)="removeInputFromArray(controlsArray, i)">REMOVE
                 </button>
             </div>
         </div><!--ADD and REMOVE-->
     </div>
 
 
-
     <div *ngIf="a.subinputs.length != 0">
-        <app-form [controlsArray]="a.subinputs"
-                  [parentQuestionType]="a.questionType">
-        </app-form>
+        <app-input-creator [controlsArray]="a.subinputs"
+                           [parentQuestionType]="a.questionType">
+        </app-input-creator>
     </div>
 </div>
 

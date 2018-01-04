@@ -3,8 +3,6 @@ import {FormControl} from './data-model';
 
 @Injectable()
 export class FormBuilderService {
-    controlsArray: FormControl[] = [];
-
     constructor() {
     }
 

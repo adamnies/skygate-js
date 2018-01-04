@@ -1,10 +1,10 @@
-<app-form [controlsArray]="controlsArray"></app-form>
+<app-input-creator [controlsArray]="controlsArray"></app-input-creator>
 
-<div class="customButton1" *ngIf="controlsArray.length == 0">
-    <button class="btn btn-success" (click)="addInput()">START/ADD INPUT</button>
+<div class="buttonPrimary" *ngIf="controlsArray.length == 0">
+    <button class="btn btn-success" (click)="addFormControlToArray(controlsArray)">START/ADD INPUT</button>
 </div>
 
-<div class="customButton2" *ngIf="controlsArray.length != 0">
-    <button class="btn btn-secondary" (click)="addInput()">ADD INPUT</button>
+<div class="buttonSecondary" *ngIf="controlsArray.length != 0">
+    <button class="btn btn-secondary" (click)="addFormControlToArray(controlsArray)">ADD INPUT</button>
 </div>
 

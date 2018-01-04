@@ -5,7 +5,6 @@ import {PreviewComponent} from './preview/preview.component';
 import {ExportComponent} from './export/export.component';
 
 const routes: Routes = [
-    {path: '', component: CreateComponent},
     {path: 'create', component: CreateComponent},
     {path: 'preview', component: PreviewComponent},
     {path: 'export', component: ExportComponent},

@@ -8,13 +8,14 @@ import {FormBuilderService} from '../form-builder.service';
     styleUrls: ['./export.component.css']
 })
 export class ExportComponent implements OnInit {
+
     controlsArray: FormControl[] = [];
 
     constructor(private formBuilderService: FormBuilderService) {
     }
 
     ngOnInit() {
-        this.controlsArray = this.formBuilderService.controlsArray;
+        this.controlsArray = this.formBuilderService.importFromLocalStorage();
     }
 
 }

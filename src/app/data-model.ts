@@ -7,3 +7,14 @@ export class FormControl {
     subinputs?: FormControl[];
 }
 
+export const QUESTION_TYPES = [
+    'Yes/No',
+    'Text',
+    'Number'
+];
+
+export const CONDITION_TYPES = [
+    'Equals',
+    'Greater',
+    'Less'
+];

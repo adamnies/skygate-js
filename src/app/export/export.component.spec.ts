@@ -1,25 +1,32 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {ExportComponent} from './export.component';
+import {FormBuilderService} from '../form-builder.service';
 
-import { ExportComponent } from './export.component';
+class MockedFormBuilderService {
+    importFromLocalStorage() {
+        return ['first', 'second'];
+    }
+
+    exportToLocalStorage(data) {
+
+    }
+}
+
 
 describe('ExportComponent', () => {
-  let component: ExportComponent;
-  let fixture: ComponentFixture<ExportComponent>;
+    let component: ExportComponent;
+    let service: MockedFormBuilderService;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ExportComponent ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(() => {
+        service = new MockedFormBuilderService();
+        component = new ExportComponent(service);
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ExportComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    afterEach(() => {
+        service = null;
+        component = null;
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

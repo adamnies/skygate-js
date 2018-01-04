@@ -1,40 +1,34 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilderService} from '../../form-builder.service';
-import {FormControl} from '../../data-model';
+import {CONDITION_TYPES, FormControl, QUESTION_TYPES} from '../../data-model';
 
 @Component({
     selector: 'app-form-preview',
     templateUrl: './form-preview.component.html',
     styleUrls: ['./form-preview.component.css']
 })
-export class FormPreviewComponent implements OnInit {
+export class FormPreviewComponent {
     @Input() controlsArray: FormControl[] = [];
     @Input() parentValue: any = '';
     @Input() parentQuestionType = '';
     @Input() inputsLevel: String;
 
-    questionTypes = ['Yes/No', 'Text', 'Number'];
-    conditionTypes = ['Equals', 'Greater', 'Less'];
+    conditionTypes = CONDITION_TYPES;
 
-    constructor(private formBuilderService: FormBuilderService) {
-
-    }
-
-    ngOnInit() {
-        console.log(this.inputsLevel);
+    constructor() {
     }
 
     checkCondition(control): Boolean {
         if (this.parentValue == '' && this.parentQuestionType == '') {
             return true;
         }
-        if (this.parentQuestionType === this.questionTypes[0]) {
+        if (this.parentQuestionType === QUESTION_TYPES[0]) {
             return (this.parentValue === control.conditionValue);
         }
-        if (this.parentQuestionType === this.questionTypes[1]) {
+        if (this.parentQuestionType === QUESTION_TYPES[1]) {
             return (this.parentValue === control.conditionValue);
         }
-        if (this.parentQuestionType === this.questionTypes[2]) {
+        if (this.parentQuestionType === QUESTION_TYPES[2]) {
             if (control.conditionType === this.conditionTypes[0]) {
                 return (this.parentValue == control.conditionValue);
             }

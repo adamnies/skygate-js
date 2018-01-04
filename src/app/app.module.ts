@@ -3,23 +3,23 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {FormsModule} from '@angular/forms';
-import {FormComponent} from './create/form/form.component';
+import {FormsModule, FormControl, FormGroup} from '@angular/forms';
 import {CreateComponent} from './create/create.component';
 import {PreviewComponent} from './preview/preview.component';
 import {ExportComponent} from './export/export.component';
 import {FormBuilderService} from './form-builder.service';
-import { FormPreviewComponent } from './preview/form-preview/form-preview.component';
+import {FormPreviewComponent} from './preview/form-preview/form-preview.component';
+import {InputCreatorComponent} from './create/input-creator/input-creator.component';
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        FormComponent,
         CreateComponent,
         PreviewComponent,
         ExportComponent,
-        FormPreviewComponent
+        FormPreviewComponent,
+        InputCreatorComponent
     ],
     imports: [
         BrowserModule,
