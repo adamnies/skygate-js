@@ -7,7 +7,7 @@ import {FormControl} from '../data-model';
     templateUrl: './preview.component.html',
     styleUrls: ['./preview.component.css']
 })
-export class PreviewComponent implements OnInit, OnChanges {
+export class PreviewComponent implements OnInit, OnChanges, OnDestroy {
     @Input() controlsArray: FormControl[] = [];
 
     constructor(private formBuilderService: FormBuilderService) {
@@ -18,6 +18,10 @@ export class PreviewComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges() {
+        this.formBuilderService.exportToLocalStorage('controlsArray', this.controlsArray);
+    }
+
+    ngOnDestroy() {
         this.formBuilderService.exportToLocalStorage('controlsArray', this.controlsArray);
     }
 }

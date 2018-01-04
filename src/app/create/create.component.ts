@@ -7,7 +7,7 @@ import {FormControl, QUESTION_TYPES} from '../data-model';
     templateUrl: './create.component.html',
     styleUrls: ['./create.component.css']
 })
-export class CreateComponent implements OnInit, OnChanges {
+export class CreateComponent implements OnInit, OnChanges, OnDestroy {
 
     controlsArray: FormControl[] = [];
 
@@ -19,6 +19,10 @@ export class CreateComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges() {
+        this.formBuilderService.exportToLocalStorage('controlsArray', this.controlsArray);
+    }
+
+    ngOnDestroy() {
         this.formBuilderService.exportToLocalStorage('controlsArray', this.controlsArray);
     }
 
