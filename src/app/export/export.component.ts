@@ -15,7 +15,7 @@ export class ExportComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.controlsArray = this.formBuilderService.importFromLocalStorage();
+        this.controlsArray = this.formBuilderService.importFromLocalStorage('controlsArray');
     }
 
 }

@@ -6,15 +6,14 @@ export class FormBuilderService {
     constructor() {
     }
 
-    importFromLocalStorage() {
-        const x = localStorage.getItem('controlsArray');
-        const y = JSON.parse(x);
-        return y != null ? y : [];
+    importFromLocalStorage(key: string) {
+        const value = localStorage.getItem(key);
+        return value != null ? JSON.parse(value) : [];
     }
 
-    exportToLocalStorage(controlsArray) {
-        if (controlsArray != null) {
-            localStorage.setItem('controlsArray', JSON.stringify(controlsArray));
+    exportToLocalStorage(key: string, value: any) {
+        if (key != null && value != null) {
+            localStorage.setItem(key, JSON.stringify(value));
         }
     }
 }

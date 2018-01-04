@@ -1,30 +1,49 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {PreviewComponent} from './preview.component';
-import {FormsModule} from '@angular/forms';
-import {FormBuilderService} from '../form-builder.service';
-import {FormPreviewComponent} from './form-preview/form-preview.component';
+import {FormControl} from '../data-model';
+
+class FormBuilderServiceMock {
+    store = {};
+
+    importFromLocalStorage(key: string) {
+        return this.store[key];
+    }
+
+    exportToLocalStorage(key: string, value: any) {
+        this.store[key] = value;
+    }
+}
 
 describe('PreviewComponent', () => {
-    let component: PreviewComponent;
-    let fixture: ComponentFixture<PreviewComponent>;
-
-    beforeEach(async(() => {
-        TestBed.configureTestingModule({
-            imports: [FormsModule],
-            declarations: [PreviewComponent, FormPreviewComponent],
-            providers: [FormBuilderService]
-        })
-            .compileComponents();
-    }));
+    let service;
+    let component;
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(PreviewComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
+        service = new FormBuilderServiceMock();
+        component = new PreviewComponent(service);
     });
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
+    it('should get controlsArray from service', () => {
+        const data: FormControl = {
+            value: 'a',
+            question: 'b',
+            questionType: 'd'
+        };
+        const array = [data, data];
+
+        service.store['controlsArray'] = array;
+        component.ngOnInit();
+        expect(component.controlsArray === array).toBeTruthy();
+    });
+
+    it('should export controlsArray to Service', () => {
+        const data: FormControl = {
+            value: 'a',
+            question: 'b',
+            questionType: 'd'
+        };
+        const array = [data, data];
+        component.controlsArray = array;
+        component.ngOnChanges();
+        expect(service.store['controlsArray'] === array).toBeTruthy();
     });
 });

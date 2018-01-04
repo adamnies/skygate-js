@@ -15,11 +15,11 @@ export class CreateComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-        this.controlsArray = this.formBuilderService.importFromLocalStorage();
+        this.controlsArray = this.formBuilderService.importFromLocalStorage('controlsArray');
     }
 
     ngOnChanges() {
-        this.formBuilderService.exportToLocalStorage(this.controlsArray);
+        this.formBuilderService.exportToLocalStorage('controlsArray', this.controlsArray);
     }
 
     addFormControlToArray(controlsArray) {
